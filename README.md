@@ -60,6 +60,6 @@ export GROQ_MODEL="llama-3.3-70b-versatile"
 2. Go to [Streamlit Cloud](https://share.streamlit.io) and connect your GitHub repo.
 3. Select `app.py` as the entrypoint.
 4. Add `GROQ_API_KEY` in secrets (see above).
-5. Deploy.
+5. Deploy the app.
 
 ---------------
