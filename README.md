@@ -62,4 +62,4 @@ export GROQ_MODEL="llama-3.3-70b-versatile"
 4. Add `GROQ_API_KEY` in secrets (see above).
 5. Deploy the app.
 
----------------
+--------------
