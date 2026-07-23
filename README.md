@@ -1,65 +1,139 @@
-# AI Data Analyst (Streamlit)
+# XMail – AI-Driven Email Categorization Engine
 
-Upload a dataset (`.csv` / `.xlsx`, plus best-effort `.pdf` / `.docx`) and ask questions in plain English. The app returns a computed table and (when possible) a chart.
+An AI-powered email classification system that automatically categorizes emails into **Spam, Promotions, Social, and Important** using Natural Language Processing (NLP) and supervised Machine Learning. The project combines a Python backend with a React frontend and integrates the Gmail API for secure email access.
 
-LLM calls use **[Groq](https://console.groq.com)** (OpenAI-compatible API).
+## Features
 
-## Supported uploads
-- `CSV` (`.csv`)
-- `Excel` (`.xlsx`, best-effort via pandas)
-- `PDF` (`.pdf`): best-effort table extraction; if no tables are found, it will show a friendly message (no charts)
-- `DOCX` (`.docx`): best-effort table extraction; if no tables are found, it will show a friendly message (no charts)
+- 📧 Automatic email classification into:
+  - Spam
+  - Promotions
+  - Social
+  - Important
+- 🤖 Supervised Machine Learning pipeline for text classification
+- 📝 Text preprocessing and vectorization using NLP techniques
+- 📊 Model evaluation with cross-validation for reliable performance
+- 🔐 Secure Gmail integration using OAuth 2.0 authentication
+- ☁️ Google Cloud integration for Gmail API access
+- 🌐 Full-stack web application with React frontend and FastAPI/Flask backend
 
-## How it stays “safe”
-- The LLM returns a JSON template spec (no arbitrary code execution).
-- The backend runs only a small allow-list of deterministic pandas operations.
-- **Dataset summary** (when you ask in chat): accurate column profile + optional sample rows are computed in Python (not guessed by the model).
-- Out-of-scope questions get an explicit **“I can’t answer this…”** style response listing what *is* supported.
-- File size is capped at **100MB**; very large tables are sampled for responsiveness.
+## Tech Stack
 
-## Local run
+### Backend
+- Python
+- FastAPI / Flask
+- Scikit-learn
+- Pandas
+- NumPy
+
+### Machine Learning & NLP
+- Scikit-learn
+- TF-IDF / Count Vectorization
+- Text preprocessing
+- Supervised Classification
+- Cross-validation
+
+### Frontend
+- React
+- HTML
+- CSS
+- JavaScript
+
+### APIs & Cloud
+- Gmail API
+- OAuth 2.0
+- Google Cloud Platform
+
+## Machine Learning Pipeline
+
+1. Email data collection and preprocessing
+2. Text cleaning and normalization
+3. Feature extraction using text vectorization
+4. Model training using supervised learning algorithms
+5. Performance evaluation using cross-validation
+6. Prediction and categorization of incoming emails
+
+## Email Categories
+
+| Category | Description |
+|----------|-------------|
+| Spam | Unwanted or malicious emails |
+| Promotions | Marketing and promotional content |
+| Social | Notifications from social media platforms |
+| Important | Personal or high-priority emails |
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone <repository-url>
+cd xmail
+```
+
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
-streamlit run app.py
 ```
 
-## Configure Groq API key
+### Configure Google Cloud & Gmail API
 
-### Option A: `.streamlit/secrets.toml` (local Streamlit)
-Create or edit `ai-data-analyst/.streamlit/secrets.toml`:
+1. Create a Google Cloud project.
+2. Enable the Gmail API.
+3. Create OAuth 2.0 credentials.
+4. Download the credentials file and place it in the project directory.
+5. Configure the required environment variables.
 
-```toml
-GROQ_API_KEY = "gsk_your_key_here"
-```
-
-Do **not** commit real keys to Git.
-
-### Option B: environment variable
+### Run the Backend
 
 ```bash
-export GROQ_API_KEY="gsk_your_key_here"
+python app.py
 ```
 
-### Option C: Streamlit Cloud
-In your app’s **Secrets**, add:
-
-```toml
-GROQ_API_KEY = "gsk_your_key_here"
-```
-
-### Optional: model override
-Default model is `llama-3.1-8b-instant`. To use another Groq model:
+or
 
 ```bash
-export GROQ_MODEL="llama-3.3-70b-versatile"
+uvicorn main:app --reload
 ```
 
-## Deploy to Streamlit Cloud
-1. Push this folder to GitHub.
-2. Go to [Streamlit Cloud](https://share.streamlit.io) and connect your GitHub repo.
-3. Select `app.py` as the entrypoint.
-4. Add `GROQ_API_KEY` in secrets (see above).
-5. Deploy the app.
+### Run the Frontend
 
---------------
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Project Structure
+
+```
+xmail/
+│
+├── backend/
+│   ├── models/
+│   ├── preprocessing/
+│   ├── api/
+│   └── app.py
+│
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   └── public/
+│
+├── requirements.txt
+└── README.md
+```
+
+## Future Improvements
+
+- Multi-label email classification
+- Email summarization using LLMs
+- Priority scoring system
+- Custom user-defined categories
+- Continuous model retraining
+- Real-time email monitoring
+- Multi-language email support
+
+## License
+
+This project is intended for educational and portfolio purposes.
