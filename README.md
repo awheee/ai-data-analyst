@@ -1,6 +1,8 @@
 # AI Data Analyst (Streamlit)
 
-Upload a dataset (`.csv` / `.xlsx`, plus best-effort `.pdf` / `.docx`) and ask questions in plain English. The app returns a computed table and (when possible) a chart.
+🚀 **Live Demo:** https://ai-data-analyst-awheee.streamlit.app/
+
+An LLM-powered data analysis application that lets users upload datasets (`.csv`, `.xlsx`, `.pdf`, `.docx`) and ask questions in plain English. The app returns computed tables and, when possible, interactive visualizations.
 
 LLM calls use **[Groq](https://console.groq.com)** (OpenAI-compatible API).
 
@@ -27,6 +29,7 @@ streamlit run app.py
 ## Configure Groq API key
 
 ### Option A: `.streamlit/secrets.toml` (local Streamlit)
+
 Create or edit `ai-data-analyst/.streamlit/secrets.toml`:
 
 ```toml
@@ -35,29 +38,32 @@ GROQ_API_KEY = "gsk_your_key_here"
 
 Do **not** commit real keys to Git.
 
-### Option B: environment variable
+### Option B: Environment Variable
 
 ```bash
 export GROQ_API_KEY="gsk_your_key_here"
 ```
 
 ### Option C: Streamlit Cloud
-In your app’s **Secrets**, add:
+
+In your app's **Secrets**, add:
 
 ```toml
 GROQ_API_KEY = "gsk_your_key_here"
 ```
 
-### Optional: model override
-Default model is `llama-3.1-8b-instant`. To use another Groq model:
+### Optional: Model Override
+
+Default model is `llama-3.1-8b-instant`.
 
 ```bash
 export GROQ_MODEL="llama-3.3-70b-versatile"
 ```
 
 ## Deploy to Streamlit Cloud
+
 1. Push this folder to GitHub.
 2. Go to [Streamlit Cloud](https://share.streamlit.io) and connect your GitHub repo.
 3. Select `app.py` as the entrypoint.
-4. Add `GROQ_API_KEY` in secrets (see above).
+4. Add `GROQ_API_KEY` in Secrets.
 5. Deploy the app.
